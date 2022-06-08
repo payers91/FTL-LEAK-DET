@@ -7,7 +7,7 @@
     <DownloadApplicationInfo>true</DownloadApplicationInfo>
     <WriteProductVersion>true</WriteProductVersion>
     <GenerateTpy>false</GenerateTpy>
-    <Name>plc_mrco_vac</Name>
+    <Name>plc_ftl_leak_det</Name>
     <ProgramVersion>3.1.4023.0</ProgramVersion>
     <Application>{95a2457d-ea89-4ddf-b5a2-6868011077ed}</Application>
     <TypeSystem>{f7c853d9-2aff-48b2-aea5-a1fe3cbab435}</TypeSystem>
@@ -17,35 +17,39 @@
     <LibraryReferences>{083801e5-18c8-483c-acae-c7274cadd8e2}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="GVLs\GVL_COM.TcGVL">
+    <Compile Include="DUTs\E_DeviceState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_DeviceDiagnostic.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_ErrorStates.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\GVL_IO.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
-    <Compile Include="GVLs\GVL_Devices.TcGVL">
-      <SubType>Code</SubType>
-      <LinkAlways>true</LinkAlways>
-    </Compile>
-    <Compile Include="GVLs\GVL_PLC_Interfaces.TcGVL">
-      <SubType>Code</SubType>
-      <LinkAlways>true</LinkAlways>
-    </Compile>
-    <Compile Include="GVLs\GVL_Variables.TcGVL">
+    <Compile Include="GVLs\GVL_PLC.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\DIAGNOSTICS.TcPOU">
+    <Compile Include="POUs\FB_EcatDiag.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\F_Turbo_NC_NO_Valve_Logic.TcPOU">
+    <Compile Include="POUs\FB_ErrorTriggers.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\FB_LeakMonitor.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\F_ChillerValveEnable.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\PRG_COM.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -56,21 +60,13 @@
     <Folder Include="POUs" />
   </ItemGroup>
   <ItemGroup>
-    <PlaceholderReference Include="LCLS General">
-      <DefaultResolution>LCLS General, * (SLAC)</DefaultResolution>
-      <Namespace>LCLS_General</Namespace>
+    <PlaceholderReference Include="Tc2_BABasic">
+      <DefaultResolution>Tc2_BABasic, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_BABasic</Namespace>
     </PlaceholderReference>
-    <PlaceholderReference Include="LCLS Vacuum">
-      <DefaultResolution>LCLS Vacuum, * (SLAC - LCLS)</DefaultResolution>
-      <Namespace>LCLS_Vacuum</Namespace>
-    </PlaceholderReference>
-    <PlaceholderReference Include="LCLSVacuumSerialDriverLib">
-      <DefaultResolution>LCLSVacuumSerialDriverLib, * (SLAC - LCLS)</DefaultResolution>
-      <Namespace>LCLS_Vacuum_Serial</Namespace>
-    </PlaceholderReference>
-    <PlaceholderReference Include="PMPS">
-      <DefaultResolution>PMPS, * (SLAC - LCLS)</DefaultResolution>
-      <Namespace>PMPS</Namespace>
+    <PlaceholderReference Include="Tc2_EtherCAT">
+      <DefaultResolution>Tc2_EtherCAT, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_EtherCAT</Namespace>
     </PlaceholderReference>
     <PlaceholderReference Include="Tc2_SerialCom">
       <DefaultResolution>Tc2_SerialCom, * (Beckhoff Automation GmbH)</DefaultResolution>
@@ -90,9 +86,14 @@
     </PlaceholderReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="plc_mrco_vac.tmc">
+    <None Include="plc_ftl_leak_det.tmc">
       <SubType>Content</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PlaceholderResolution Include="Tc2_BABasic">
+      <Resolution>Tc2_BABasic, * (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
   </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>
