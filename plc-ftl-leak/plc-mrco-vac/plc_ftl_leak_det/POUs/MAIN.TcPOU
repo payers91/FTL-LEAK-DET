@@ -6,11 +6,13 @@ VAR
 	stErrors : ST_ErrorStates; // Triggered error states
 	fbErrorTriggers : FB_ErrorTriggers; // Brand new errors this cycl
     
-    {attribute 'pytmc' := 'pv: @(BASE):FTL:VALVE:MANUAL_LATCH'}
-    bManualValveLatch : BOOL := FALSE; //Manual latch for valves
-    
     {attribute 'pytmc' := 'pv: @(BASE):FTL:LEAK'}
     fbLeakMonitor : FB_LeakMonitor; //Leak detection
+    {attribute 'pytmc' := '
+            pv: @(BASE):VALVE_LATCH:RESET
+            io: o
+    '}
+    bValveLatchReset : BOOL; //Manual latch for valves
     
     (*
     {attribute 'pytmc' := 'pv: @(BASE):FTL:PLC'}
@@ -32,17 +34,17 @@ fbLeakMonitor(
 );
 
 (* Open NC chiller loop valves if interlock logic passes *)
-GVL_IO.bChillerValve01 := F_ChillerValveEnable(stErrors := stErrors) AND NOT bManualValveLatch;
-GVL_IO.bChillerValve02 := F_ChillerValveEnable(stErrors := stErrors) AND NOT bManualValveLatch;
+GVL_IO.bChillerValve01 := F_ChillerValveEnable(stErrors := stErrors);
+GVL_IO.bChillerValve02 := F_ChillerValveEnable(stErrors := stErrors);
 
 (* Check for rising-edge errors *)
 fbErrorTriggers(stErrors := stErrors);
 
 (* Check for new leak errors *)
 IF fbErrorTriggers.NewLeakError() THEN
-    bManualValveLatch := TRUE; //set manual latch for valves
-ELSIF NOT bManualValveLatch THEN
-	// If there are no new errors and manual latch is disabled, reset the errors
+    bValveLatchReset := FALSE; //If there is a new error turn off the valve reset
+ELSIF bValveLatchReset THEN
+	// If there are no new errors and reset is enabled, reset the errors
 	fbLeakMonitor.Reset();
 	fbErrorTriggers.ResetLeakTriggers();
 END_IF]]></ST>
