@@ -1,0 +1,35 @@
+record(bi, "$(BASE):VALVE_LATCH:RESET_RBV") {
+  field(DESC, "MAIN.bValveLatchReset")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.bValveLatchReset?")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(archive, "VAL")
+}
+
+record(bo, "$(BASE):VALVE_LATCH:RESET") {
+  field(DESC, "MAIN.bValveLatchReset")
+  field(DTYP, "asynInt32")
+  field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/MAIN.bValveLatchReset=")
+  field(ZNAM, "FALSE")
+  field(ONAM, "TRUE")
+  info(autosaveFields_pass0, "VAL")
+  info(archive, "VAL")
+}
+
+record(bi, "$(BASE):FTL:LEAK:LEAK_FOUND_RBV") {
+  field(DESC, "MAIN.fbLeakMonitor.bError")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbLeakMonitor.bError?")
+  field(ZSV, "NO_ALARM")
+  field(OSV, "MAJOR")
+  field(ZNAM, "OK")
+  field(ONAM, "LEAK")
+  info(archive, "VAL")
+}
