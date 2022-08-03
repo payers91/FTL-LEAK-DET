@@ -6,16 +6,16 @@ VAR
 	stErrors : ST_ErrorStates; // Triggered error states
 	fbErrorTriggers : FB_ErrorTriggers; // Brand new errors this cycl
     
-    {attribute 'pytmc' := 'pv: @(BASE):LEAK_MONITOR'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):LEAK_MONITOR'}
     fbLeakMonitor : FB_LeakMonitor; //Leak detection
     {attribute 'pytmc' := '
-            pv: @(BASE):VALVE:RESET
+            pv: @(PREFIX):VALVE:RESET
             io: o
     '}
     bValveLatchReset : BOOL; //Manual latch for valves
     
     (*
-    {attribute 'pytmc' := 'pv: @(BASE):FTL:PLC'}
+    {attribute 'pytmc' := 'pv: @(PREFIX):FTL:PLC'}
 	fbDiag : FB_EcatDiag; // Ethercat diagnostic
     *)
 END_VAR]]></Declaration>

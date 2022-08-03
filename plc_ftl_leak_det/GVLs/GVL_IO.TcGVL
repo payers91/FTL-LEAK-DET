@@ -6,7 +6,7 @@
 VAR_GLOBAL
 	(* Slot1 EL2212 -- Cooling Valve Outputs *)
     {attribute 'pytmc' := '
-                pv: @(BASE):VALVE:01
+                pv: @(PREFIX):VALVE:01
                 io: i
                 field: ZNAM "CLOSED"
                 field: ONAM "OPEN"
@@ -14,7 +14,7 @@ VAR_GLOBAL
     {attribute 'TcLinkTo' :=    'TIIB[FTL_PLC_E02_EL2212]^DOX Control Channel 1^Control^Output'}
 	bChillerValve01 AT %Q* : BOOL; // Ch1
     {attribute 'pytmc' := '
-                pv: @(BASE):VALVE:02
+                pv: @(PREFIX):VALVE:02
                 io: i
                 field: ZNAM "CLOSED"
                 field: ONAM "OPEN"
@@ -24,7 +24,7 @@ VAR_GLOBAL
     
 	(* Slot2 EL1004 -- Leak Detector Inputs *)
     {attribute 'pytmc' := '
-                pv: @(BASE):DETECTOR:01
+                pv: @(PREFIX):DETECTOR:01
                 io: i
                 field: ZNAM "OK"
                 field: ONAM "LEAK"
@@ -32,7 +32,7 @@ VAR_GLOBAL
     {attribute 'TcLinkTo' :=    'TIIB[FTL_PLC_E03_EL1004]^Channel 1^Input'}
     bLeakRelay01 AT %I* : BOOL; // Ch1
     {attribute 'pytmc' := '
-                pv: @(BASE):DETECTOR:02
+                pv: @(PREFIX):DETECTOR:02
                 io: i
                 field: ZNAM "OK"
                 field: ONAM "LEAK"

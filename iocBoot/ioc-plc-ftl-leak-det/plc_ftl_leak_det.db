@@ -46,6 +46,20 @@ record(bi, "$(BASE):VALVE:02_RBV") {
   info(archive, "VAL")
 }
 
+record(bi, "$(BASE):LEAK_MONITOR:LEAK_FOUND_RBV") {
+  field(DESC, "MAIN.fbLeakMonitor.bError")
+  field(SCAN, "I/O Intr")
+  field(PINI, "1")
+  field(TSE, "-2")
+  field(DTYP, "asynInt32")
+  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbLeakMonitor.bError?")
+  field(ZSV, "NO_ALARM")
+  field(OSV, "MAJOR")
+  field(ZNAM, "OK")
+  field(ONAM, "LEAK")
+  info(archive, "VAL")
+}
+
 record(bi, "$(BASE):VALVE:RESET_RBV") {
   field(DESC, "MAIN.bValveLatchReset")
   field(SCAN, "I/O Intr")
@@ -65,19 +79,5 @@ record(bo, "$(BASE):VALVE:RESET") {
   field(ZNAM, "FALSE")
   field(ONAM, "TRUE")
   info(autosaveFields_pass0, "VAL")
-  info(archive, "VAL")
-}
-
-record(bi, "$(BASE):LEAK_MONITOR:LEAK_FOUND_RBV") {
-  field(DESC, "MAIN.fbLeakMonitor.bError")
-  field(SCAN, "I/O Intr")
-  field(PINI, "1")
-  field(TSE, "-2")
-  field(DTYP, "asynInt32")
-  field(INP, "@asyn($(PORT),0,1)ADSPORT=851/POLL_RATE=1/MAIN.fbLeakMonitor.bError?")
-  field(ZSV, "NO_ALARM")
-  field(OSV, "MAJOR")
-  field(ZNAM, "OK")
-  field(ONAM, "LEAK")
   info(archive, "VAL")
 }
