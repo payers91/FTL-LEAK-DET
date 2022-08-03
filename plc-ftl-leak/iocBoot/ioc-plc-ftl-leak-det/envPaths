@@ -1,2 +1,0 @@
-epicsEnvSet("IOC_TOP", "/c/Users/payers/Documents/repos/ftl-leak-det/plc-ftl-leak/iocBoot/ioc-plc-ftl-leak-det")
-epicsEnvSet("IOC_DATA", "C:\Users\payers/iocData")
