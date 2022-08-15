@@ -1,4 +1,4 @@
-record(bi, "$(BASE):DETECTOR:01_RBV") {
+record(bi, "$(PREFIX):DETECTOR:01_RBV") {
   field(DESC, "GVL_IO.bLeakRelay01")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -10,7 +10,7 @@ record(bi, "$(BASE):DETECTOR:01_RBV") {
   info(archive, "VAL")
 }
 
-record(bi, "$(BASE):DETECTOR:02_RBV") {
+record(bi, "$(PREFIX):DETECTOR:02_RBV") {
   field(DESC, "GVL_IO.bLeakRelay02")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -22,7 +22,7 @@ record(bi, "$(BASE):DETECTOR:02_RBV") {
   info(archive, "VAL")
 }
 
-record(bi, "$(BASE):VALVE:01_RBV") {
+record(bi, "$(PREFIX):VALVE:01_RBV") {
   field(DESC, "GVL_IO.bChillerValve01")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -34,7 +34,7 @@ record(bi, "$(BASE):VALVE:01_RBV") {
   info(archive, "VAL")
 }
 
-record(bi, "$(BASE):VALVE:02_RBV") {
+record(bi, "$(PREFIX):VALVE:02_RBV") {
   field(DESC, "GVL_IO.bChillerValve02")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -46,7 +46,7 @@ record(bi, "$(BASE):VALVE:02_RBV") {
   info(archive, "VAL")
 }
 
-record(bi, "$(BASE):LEAK_MONITOR:LEAK_FOUND_RBV") {
+record(bi, "$(PREFIX):LEAK_MONITOR:LEAK_FOUND_RBV") {
   field(DESC, "MAIN.fbLeakMonitor.bError")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -60,7 +60,7 @@ record(bi, "$(BASE):LEAK_MONITOR:LEAK_FOUND_RBV") {
   info(archive, "VAL")
 }
 
-record(bi, "$(BASE):VALVE:RESET_RBV") {
+record(bi, "$(PREFIX):VALVE:RESET_RBV") {
   field(DESC, "MAIN.bValveLatchReset")
   field(SCAN, "I/O Intr")
   field(PINI, "1")
@@ -72,7 +72,7 @@ record(bi, "$(BASE):VALVE:RESET_RBV") {
   info(archive, "VAL")
 }
 
-record(bo, "$(BASE):VALVE:RESET") {
+record(bo, "$(PREFIX):VALVE:RESET") {
   field(DESC, "MAIN.bValveLatchReset")
   field(DTYP, "asynInt32")
   field(OUT, "@asyn($(PORT),0,1)ADSPORT=851/MAIN.bValveLatchReset=")
