@@ -8,12 +8,23 @@ VAR_INPUT
     bLeakRelay02 : BOOL; // Whether a leak was detected on sensor 2
 END_VAR
 VAR_OUTPUT
+    
+    {attribute 'pytmc' := '
+            pv: LEAK_FOUND
+            io: i
+            field: OSV MAJOR
+            field: ZSV NO_ALARM
+            field: ZNAM OK
+            field: ONAM LEAK
+    '}
 	bError: BOOL := FALSE; //Error flag 
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[(* Set error flag if leak is detected on either sensor*)
-bError := bLeakRelay01 OR bLeakRelay02;]]></ST>
+IF (bLeakRelay01 = FALSE OR bLeakRelay02 = FALSE) THEN
+    bError := TRUE;
+END_IF]]></ST>
     </Implementation>
     <Method Name="Reset" Id="{99e2e7d1-3dd4-4f42-8f02-0e9f34a50a59}">
       <Declaration><![CDATA[// Reset latched errors

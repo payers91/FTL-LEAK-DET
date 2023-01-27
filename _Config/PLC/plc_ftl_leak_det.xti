@@ -67,4 +67,16 @@
 			</TaskPouOids>
 		</Instance>
 	</Project>
+	<Mappings>
+		<OwnerA Name="plc_ftl_leak_det Instance">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^FTL_PLC_E02_EL2212">
+				<Link VarA="PlcTask Outputs^GVL_IO.bChillerValve01" VarB="DOX Control Channel 1^Control^Output" AutoLink="true"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.bChillerValve02" VarB="DOX Control Channel 2^Control^Output" AutoLink="true"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^FTL_PLC_E03_EL1004">
+				<Link VarA="PlcTask Inputs^GVL_IO.bLeakRelay01" VarB="Channel 1^Input" AutoLink="true"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bLeakRelay02" VarB="Channel 2^Input" AutoLink="true"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
 </TcSmItem>
